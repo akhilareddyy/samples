@@ -13,6 +13,11 @@ parameters{
  }
 
 stages{
+ stage ('Clean workspace') {
+  steps {
+    cleanWs()
+  }
+}
  stage('Checkout') {
     steps {
       git url: 'https://github.com/akhilareddyy/samples.git', branch: 'main'
