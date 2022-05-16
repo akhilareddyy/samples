@@ -2,9 +2,9 @@ pipeline{
     agent any
 
 stages{
- stage('Checkout') {
+ stage('Checkout repo') {
     steps {
-      git url: 'https://github.com/akhilareddyy/samples.git', branch: 'main', credentialsId: ''
+      git url: 'https://github.com/akhilareddyy/samples.git', branch: 'main'
      }
   }
 
@@ -27,19 +27,14 @@ stage('Publish'){
        bat "dotnet publish ./samples/aspnetcore/blazor/BinarySubmit/BinarySubmit.csproj "
      }
 }
-
-
         
 stage('Deploy to Azure (DEV)') {
 	steps {
-		azureWebAppPublish azureCredentialsId: "", 
-		resourceGroup: "app-mig-rg", 
-		appName: "appmig1105-wapp", 
-		sourceDirectory: "samples/aspnetcore/blazor/BinarySubmit/"
-	}
+	  azureWebAppPublish azureCredentialsId: "", 
+	  resourceGroup: "app-mig-rg", 
+	  appName: "appmig1105-wapp", 
+	  sourceDirectory: "samples/aspnetcore/blazor/BinarySubmit/"
+      }
 }
 
-
 }
- } 
-  
