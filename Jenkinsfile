@@ -33,7 +33,7 @@ stage('Deploy to Azure (DEV)') {
 	  azureWebAppPublish azureCredentialsId: "25b385e8-d841-4c5c-a422-6ec2b07e3af9", 
 	  resourceGroup: "app-mig-rg", 
 	  appName: "appmig1105-wapp", 
-	  sourceDirectory: "samples/aspnetcore/blazor/BinarySubmit/"
+	  sourceDirectory: "samples/aspnetcore/blazor/BinarySubmit/bin/Debug/net5.0/publish"
       }
 }
 
