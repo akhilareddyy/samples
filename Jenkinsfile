@@ -4,7 +4,7 @@ pipeline{
 stages{
  stage('Checkout repo') {
     steps {
-      git url: 'https://github.com/akhilareddyy/samples.git', branch: 'main'
+      git url: 'https://github.com/akhilareddyy/samples.git', branch: 'main', credentialsId: '49571fd3-6bdc-4181-9a6f-2bb4f20d5a22'
      }
   }
 
@@ -30,7 +30,7 @@ stage('Publish'){
         
 stage('Deploy to Azure (DEV)') {
 	steps {
-	  azureWebAppPublish azureCredentialsId: "", 
+	  azureWebAppPublish azureCredentialsId: "25b385e8-d841-4c5c-a422-6ec2b07e3af9", 
 	  resourceGroup: "app-mig-rg", 
 	  appName: "appmig1105-wapp", 
 	  sourceDirectory: "samples/aspnetcore/blazor/BinarySubmit/"
